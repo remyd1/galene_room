@@ -4,6 +4,16 @@ PHP Management code for [Galène](https://galene.org) rooms.
 
 ## Configuration
 
+Basic configuration is available in `inc/config.php`. Please adjust it to fit your needs.
+
+This code is a PHP code for a web server; obviously, you will need :
+
+  * `php`,
+  * `php-fpm` or `mod_php` or `FastCGI`,
+  * `php-curl` for [hcaptcha](#hcaptcha),
+  * a web server, like `nginx` or `apache2`...
+  * a [Galène](https://galene.org) server (easier if it is on the same server, otherwise you will need to share the {sub,}group directory for this web server.
+
 ### Directory and web server
 
 You will need a web server that have write permissions on a {sub,}group directory (see `inc/config.php`).
@@ -37,7 +47,7 @@ You will find a nginx configuration example in the `utils` directory.
 
 ### Hcaptcha
 
-`php-curl` is required for [`hcaptcha`](https://www.hcaptcha.com/). To configure `hcaptcha`, please login in their dashboard to create a _site key_ and a _secret key_.
+`php-curl` is required for [`hcaptcha`](https://www.hcaptcha.com/). To configure `hcaptcha`, please login on [their dashboard](https://dashboard.hcaptcha.com/settings) to create a _site key_ and a _secret key_.
 
 You will need these values in `inc/hcaptcha.php`. Otherwise, you will have to disable `hcaptcha` (set it to `false`).
 
