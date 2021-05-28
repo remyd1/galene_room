@@ -43,7 +43,7 @@ Otherwise, if you do not need, you can delete your `api` folder.
 
 However, for now, there is no other way to list rooms, delete a room or display room's details (obviously, you still can do this from your terminal on the server (...)).
 
-You will find a nginx configuration example in the `utils` directory.
+You will find a nginx configuration example in the `utils` directory (using `php-fpm`, `Let's encrypt` and `Galène`).
 
 ### Hcaptcha
 
