@@ -4,7 +4,7 @@
 include_once('inc/config.php');
 //see https://medium.com/@hCaptcha/using-hcaptcha-with-php-fc31884aa9ea
 include('inc/hcaptcha.php');
-include('lib/php/action.php');
+include('lib/php/actions.php');
 
 
 $html = '<!doctype html>';
