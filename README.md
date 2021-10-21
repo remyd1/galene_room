@@ -55,7 +55,7 @@ htpasswd -c /etc/nginx/.htpasswd test_user
 
 Otherwise, if you do not need it, you can delete your `api` folder. However, for now, there is no other way to list rooms, delete a room or display room's details (obviously, you still can do this from your terminal on the server (...)).
 
-You will find a nginx configuration example in the `utils` directory (using `php-fpm`, `Let's encrypt` and `Galène`). If you want 2 htpasswd files (one for room creation and another one for the api access), you can use `utils/nginx/galene_with2users`. If you do so, you will have to modify URLs for the api access; for instance, `https://galene.domain.tld/room/api/list.php` become `https://galene.domain.tld/api/list.php`.
+You will find a nginx configuration example in the `utils` directory (using `php-fpm`, `Let's encrypt` and `Galène`). If you want 2 htpasswd files (one for room creation and another one for the api access), you can use `utils/nginx/galene_with2users`. If you do so, you will have to modify URLs for the api access; for instance, `https://galene.domain.tld/room/api/list.php` becomes `https://galene.domain.tld/api/list.php`.
 
 ### Hcaptcha
 
