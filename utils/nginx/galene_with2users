@@ -1,10 +1,18 @@
 server {
-    listen 443 ssl default_server;
-    listen [::]:443 ssl default_server;
+    # To use with 2 .htpasswd files:
+    #   - 1 for basic room creations (/etc/nginx/.htpasswd)
+    #   - 1 for api access (/etc/nginx/.htpasswdapi)
+    listen 443 default_server ssl;
+    listen [::]:443 default_server ssl;
     server_name galene.domain.tld;
     ssl_certificate /etc/letsencrypt/live/galene.domain.tld/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/galene.domain.tld/privkey.pem;
 
+    location /room/api {
+        root /var/www/html;
+        deny all;
+        return 404;
+    }
     location /room {
         root /var/www/html;
         auth_basic "Restricted Content";
@@ -14,6 +22,17 @@ server {
             fastcgi_pass unix:/run/php/php7.3-fpm.sock;
         }
     }
+    
+    location /api {
+        root /var/www/html/room/;
+        auth_basic "Restricted Content";
+        auth_basic_user_file /etc/nginx/.htpasswdapi;
+        location ~ \.php$ {
+            include snippets/fastcgi-php.conf;
+            fastcgi_pass unix:/run/php/php7.3-fpm.sock;
+        }
+    }
+    
     location / {
     
       # Force usage of https
@@ -28,7 +47,8 @@ server {
       proxy_set_header  X-Forwarded-Proto $scheme;
       proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
       proxy_set_header  X-Forwarded-Host $server_name;
-      
+     
+
       # WebSocket support
       proxy_http_version 1.1;
       proxy_set_header Upgrade $http_upgrade;

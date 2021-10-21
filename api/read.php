@@ -1,7 +1,7 @@
 <?php
 
-include_once("../inc/config.php");
-include_once("../lib/php/actions.php");
+include_once __DIR__ . "/../inc/config.php";
+include_once __DIR__ . "/../lib/php/actions.php";
 
 /*
   filename must be post as $_GET var.
