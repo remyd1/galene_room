@@ -1,6 +1,6 @@
 <?php
 
-include_once('../../inc/config.php');
+include_once __DIR__ .'/../../inc/config.php';
 
 function create_from_form($POST) {
     //$html .= var_dump($POST);
