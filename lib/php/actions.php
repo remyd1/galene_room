@@ -33,7 +33,7 @@ function create_from_form($POST) {
         $handle = fopen(FILE_SUBDIR.$filename, 'x');
         if($handle != FALSE) {
             fwrite($handle, $filecontent);
-            fclose(FILE_SUBDIR.$filename);
+            fclose($handle);
             $html_return = "Ok, your room has been successfully created ! Please note your new room URL : <a href='".GALENE_HOMEPAGE."/group/".$roomname."'>".GALENE_HOMEPAGE."/group/".$roomname."</a>";
         } else {
             $html_return = "Whoops ...! Your room cannot be created. An existing room with the same name already exists... ! Please try again !";
@@ -76,7 +76,7 @@ function create_from_api($room) {
     $handle = fopen(FILE_SUBDIR.$filename, 'x');
     if($handle != FALSE) {
         fwrite($handle, $filecontent);
-        fclose(FILE_SUBDIR.$filename);
+        fclose($handle);
         $html_return = "Ok\n".GALENE_HOMEPAGE."/group/".$roomname;
     } else {
         $html_return = "Whoops ...! Your room cannot be created. An existing room with the same name already exists... ! Please try again !";
